@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sprints</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta name="HandHeldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-startup-image" href="~/m/content/apple-splash.png" />
+    <link rel="apple-touch-icon" href="~/m/content/apple-touch.png" />
+    <link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" href="~/m/content/apple-splash-1024x748.png" />
+    <link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" href="~/m/content/apple-splash-748x1004.png" />
+    <link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" href="~/m/content/apple-splash-retina.png" />
+    <link href="~/m/Content/apple-touch.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="~/m/css/application.css" type="text/css" />
+    <script src="~/m/scripts/require.js" data-main="@Url.Content("~/m/scripts/main")" type="text/javascript"></script>
+</head>
+<body>
+
+    <div id="item-form" data-role="view" data-title="New Item" data-init="initForm">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-align="left" data-role="button" style="background-color: darkred" data-bind="click: startOver">Reset</a>
+                <a data-align="right" data-role="button" style="background-color: green" data-bind="click: register">Submit</a>
+
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+        <form>
+            <ul data-role="listview" data-style="inset">
+                <li>
+                    <input type="text" data-bind="value: Title" />
+                    Title
+                </li>
+                <li>
+                    <input type="date" data-bind="value: StartDate" />
+                    Start Date
+                </li>
+                <li>
+                    <input type="date" data-bind="value: EndDate" required>
+                    End Date
+                </li>
+            </ul>
+
+        </form>
+    </div>
+
+    <div id="item-complete" data-role="view" data-title="New Item" data-init="initForm">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-align="right" data-role="button" href="#item-form">New</a>
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+        Sprint created.
+    </div>
+
+</body>
+</html>

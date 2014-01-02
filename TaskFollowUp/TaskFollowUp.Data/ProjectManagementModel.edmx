@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProjectManagementModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ProjectManagementModelStoreContainer">
+    <EntitySet Name="Developers" EntityType="ProjectManagementModel.Store.Developers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sprints" EntityType="ProjectManagementModel.Store.Sprints" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tasks" EntityType="ProjectManagementModel.Store.Tasks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bugs" EntityType="ProjectManagementModel.Store.Bugs" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DeveloperTask" Association="ProjectManagementModel.Store.DeveloperTask">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="SprintTask" Association="ProjectManagementModel.Store.SprintTask">
+      <End Role="Sprint" EntitySet="Sprints" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskBugs" Association="ProjectManagementModel.Store.FK_TaskBugs">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="Bug" EntitySet="Bugs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Developers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sprints">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SprintName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="true" />
+    <Property Name="SprintId" Type="int" Nullable="false" />
+    <Property Name="DeveloperId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Bugs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Tilte" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="TaskId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="DeveloperTask">
+    <End Role="Developer" Type="ProjectManagementModel.Store.Developers" Multiplicity="0..1" />
+    <End Role="Task" Type="ProjectManagementModel.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="DeveloperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SprintTask">
+    <End Role="Sprint" Type="ProjectManagementModel.Store.Sprints" Multiplicity="1" />
+    <End Role="Task" Type="ProjectManagementModel.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sprint">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="SprintId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskBugs">
+    <End Role="Task" Type="ProjectManagementModel.Store.Tasks" Multiplicity="1" />
+    <End Role="Bug" Type="ProjectManagementModel.Store.Bugs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bug">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectManagementModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ProjectConnectionString" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Developers" EntityType="ProjectManagementModel.Developer" />
+          <EntitySet Name="Sprints" EntityType="ProjectManagementModel.Sprint" />
+          <EntitySet Name="Tasks" EntityType="ProjectManagementModel.Task" />
+          <EntitySet Name="Bugs" EntityType="ProjectManagementModel.Bug" />
+          <AssociationSet Name="DeveloperTask" Association="ProjectManagementModel.DeveloperTask">
+            <End Role="Developer" EntitySet="Developers" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="SprintTask" Association="ProjectManagementModel.SprintTask">
+            <End Role="Sprint" EntitySet="Sprints" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskBugs" Association="ProjectManagementModel.FK_TaskBugs">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="Bug" EntitySet="Bugs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tasks" Relationship="ProjectManagementModel.DeveloperTask" FromRole="Developer" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Sprint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SprintName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SprintTasks" Relationship="ProjectManagementModel.SprintTask" FromRole="Sprint" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="3" />
+          <Property Type="Int32" Name="SprintId" Nullable="false" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="true" />
+          <NavigationProperty Name="AssignedDeveloper" Relationship="ProjectManagementModel.DeveloperTask" FromRole="Task" ToRole="Developer" />
+          <NavigationProperty Name="Sprint" Relationship="ProjectManagementModel.SprintTask" FromRole="Task" ToRole="Sprint" />
+          <NavigationProperty Name="Bugs" Relationship="ProjectManagementModel.FK_TaskBugs" FromRole="Task" ToRole="Bug" />
+        </EntityType>
+        <EntityType Name="Bug">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Tilte" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="TaskId" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="ProjectManagementModel.FK_TaskBugs" FromRole="Bug" ToRole="Task" />
+        </EntityType>
+        <Association Name="DeveloperTask">
+          <End Type="ProjectManagementModel.Developer" Role="Developer" Multiplicity="0..1" />
+          <End Type="ProjectManagementModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="DeveloperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SprintTask">
+          <End Type="ProjectManagementModel.Sprint" Role="Sprint" Multiplicity="1" />
+          <End Type="ProjectManagementModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="SprintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskBugs">
+          <End Type="ProjectManagementModel.Task" Role="Task" Multiplicity="1" />
+          <End Type="ProjectManagementModel.Bug" Role="Bug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bug">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectManagementModelStoreContainer" CdmEntityContainer="ProjectConnectionString">
+    <EntitySetMapping Name="Developers">
+      <EntityTypeMapping TypeName="IsTypeOf(ProjectManagementModel.Developer)">
+        <MappingFragment StoreEntitySet="Developers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sprints">
+      <EntityTypeMapping TypeName="IsTypeOf(ProjectManagementModel.Sprint)">
+        <MappingFragment StoreEntitySet="Sprints">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SprintName" ColumnName="SprintName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="IsTypeOf(ProjectManagementModel.Task)">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="SprintId" ColumnName="SprintId" />
+          <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bugs">
+      <EntityTypeMapping TypeName="IsTypeOf(ProjectManagementModel.Bug)">
+        <MappingFragment StoreEntitySet="Bugs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tilte" ColumnName="Tilte" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,109 @@
+﻿@import url('bootstrap.cerulean.css');
+@import url('bootstrap-responsive.css');
+@import url('toastr.css');
+@import url('toastr-responsive.css');
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.container-fluid {
+
+}
+
+.modal form {
+    margin-bottom: 0;
+}
+
+h3 
+{
+    color: #404040;
+}
+
+.well h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 979px) {
+    body {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .navbar-fixed-top, .navbar-fixed-bottom {
+        margin-right: -20px;
+        margin-left: -20px;
+    }
+}
+
+@media (max-width: 767px) 
+{
+    .hero-unit {
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+    .hero-unit h1 {
+        font-size: 40px;
+    }
+
+}
+
+#source {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li.contact {
+   
+    float: left;
+    font-family: "Helvetica Neue", sans-serif;
+    line-height: 17px;
+    color: #686F74;
+    position: relative;
+    margin: 20px;
+    padding: 20px 10px 0;
+
+    position: relative;
+    -webkit-perspective: 600;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    width: 180px;
+    height: 170px;
+}
+
+li.contact .front, li.contact .back {
+     width: 180px;
+    height: 170px;
+    overflow: hidden;
+     padding: 20px 10px 0;
+    margin: 0;
+    background: whiteSmoke;
+    border: 1px solid #E3E3E3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    left: -10px;
+    top: -10px;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: rotateY(0deg);
+}
+
+li.contact .action-btn {
+    right: 4px;
+    top: 4px;
+    position: absolute;
+}

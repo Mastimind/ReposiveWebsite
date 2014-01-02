@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a574c886a4ad43d1810b448421b5f6ea" Name="Diagram1" >
+        <EntityTypeShape EntityType="TaskFollowUpModel.Developer" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="TaskFollowUpModel.Sprint" Width="1.5" PointX="7.125" PointY="2.125" />
+        <EntityTypeShape EntityType="TaskFollowUpModel.Task" Width="1.5" PointX="3.875" PointY="2" />
+        <AssociationConnector Association="TaskFollowUpModel.SprintTask" />
+        <AssociationConnector Association="TaskFollowUpModel.DeveloperTask" />
+        <EntityTypeShape EntityType="TaskFollowUpModel.Bug" Width="1.5" PointX="5.75" PointY="4.75" />
+        <AssociationConnector Association="TaskFollowUpModel.FK_TaskBugs" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
