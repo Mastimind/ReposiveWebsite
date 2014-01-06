@@ -10,8 +10,8 @@ require.config({
         'gfx': 'gfx/gfx',
         'gfx/effects': 'gfx/gfx.effects',
         'gfx/flip': 'gfx/gfx.flip',
-        'signalR': 'jquery.signalR-0.5.3.min'
-        
+        'signalR': 'jquery.signalR-0.5.3.min',
+        'highcharts':'js/highcharts'
     },
     shim: {
         "bootstrap": ["jquery"],
@@ -23,6 +23,7 @@ require.config({
         "jquery/rotate": ["jquery"],
         "toastr": ["jquery"],
         "signalR": ["jquery"],
+        "highcharts" : ["jquery"],
         "signalr/hubs": ["signalR"],
         "jquery": {
             exports: function (lib) {
@@ -56,7 +57,8 @@ require(['jquery',
     'jquery/easing',
     'jquery/rotate',
     'toastr',
-    'signalr/hubs'],
+    'signalr/hubs',
+    'highcharts'],
     function ($, Sammy, Handlebars, ko, mapping) {
         $(function () {
             ko.mapping = mapping;
@@ -155,6 +157,7 @@ require(['jquery',
             //App.applyBindings(deleteContactsVm);
 
             $("body").on("click", "li.contact .front, li.contact .close", function (e) {
+                
                 e.preventDefault();
                 var el = $(this).closest("li");
                 var anyFlipped = $("li.contact.flipped");
@@ -164,7 +167,7 @@ require(['jquery',
                     el.trigger("flip");
                 } else {
                     el.data("flippable", true);
-                    el.gfxFlip({ width: 180, height: 170 }).delay(50).queueNext(function() { el.trigger("flip"); });
+                    el.gfxFlip({ width: 180, height: 170 }).delay(50).queueNext(function () { el.trigger("flip"); });
                 }
             });
             $("#source").on("click", "li.contact .back a:not(.close)", function (e) {

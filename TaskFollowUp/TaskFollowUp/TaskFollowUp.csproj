@@ -60,6 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Autofac.WebApi.2.6.2.859\lib\NET40\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\packages\DotNet.Highcharts.2.0\lib\DotNet.Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -220,6 +223,10 @@
     <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\43.png" />
+    <Content Include="Images\skies.jpg" />
+    <Content Include="Images\snow.png" />
+    <Content Include="Images\sun.png" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="m\content\apple-splash-1024x748.png" />
@@ -292,6 +299,26 @@
     <Content Include="Scripts\hbs\json2.js" />
     <Content Include="Scripts\hbs\underscore.js" />
     <None Include="Scripts\jquery-1.7.2.intellisense.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\skies.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\jquery-animate-css-rotate-scale.js" />
@@ -308,6 +335,40 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\js\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\js\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\js\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\js\adapters\standalone-framework.js" />
+    <Content Include="Scripts\js\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\js\highcharts-all.js" />
+    <Content Include="Scripts\js\highcharts-more.js" />
+    <Content Include="Scripts\js\highcharts-more.src.js" />
+    <Content Include="Scripts\js\highcharts.js" />
+    <Content Include="Scripts\js\highcharts.src.js" />
+    <Content Include="Scripts\js\modules\annotations.js" />
+    <Content Include="Scripts\js\modules\annotations.src.js" />
+    <Content Include="Scripts\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\js\modules\data.js" />
+    <Content Include="Scripts\js\modules\data.src.js" />
+    <Content Include="Scripts\js\modules\drilldown.js" />
+    <Content Include="Scripts\js\modules\drilldown.src.js" />
+    <Content Include="Scripts\js\modules\exporting.js" />
+    <Content Include="Scripts\js\modules\exporting.src.js" />
+    <Content Include="Scripts\js\modules\funnel.js" />
+    <Content Include="Scripts\js\modules\funnel.src.js" />
+    <Content Include="Scripts\js\modules\heatmap.js" />
+    <Content Include="Scripts\js\modules\heatmap.src.js" />
+    <Content Include="Scripts\js\modules\map.js" />
+    <Content Include="Scripts\js\modules\map.src.js" />
+    <Content Include="Scripts\js\modules\no-data-to-display.js" />
+    <Content Include="Scripts\js\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\js\themes\dark-blue.js" />
+    <Content Include="Scripts\js\themes\dark-green.js" />
+    <Content Include="Scripts\js\themes\gray.js" />
+    <Content Include="Scripts\js\themes\grid.js" />
+    <Content Include="Scripts\js\themes\skies.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\knockout.mapping.js" />

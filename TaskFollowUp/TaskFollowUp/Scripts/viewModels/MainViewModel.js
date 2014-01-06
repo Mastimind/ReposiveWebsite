@@ -1,7 +1,7 @@
 ﻿/*jshint browser:true*/
 /// <reference path="../knockout-2.1.0.debug.js" />
 
-define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, Sammy, moment) {
+define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects', 'jquery'], function (ko, Sammy, moment) {
 
 
     var itemSpan = function () {
@@ -10,7 +10,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
         var isCurrentSprint = endDate > moment() && moment() >= startDate;
         return isCurrentSprint;
     };
-   
+
     var updateDisplay = function () {
         $("#source").queueNext(function () {
             $("#source").quicksand($("#destination li"), {
@@ -55,9 +55,9 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
         this.el = $(el);
         this.contactsView = this.el.find("#view-contacts");
         this.exportView = this.el.find("#export-contacts");
-         
+
         this.url = App.urlBuilder("sprint");
-        
+
         this.title = ko.observable("Sprints");
         this.subTitle = ko.observable("List");
         this.items = ko.observableArray([]);
@@ -69,8 +69,8 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
         this._updateUIVersion = 0;
 
         $("body").bind("delete-contact-confirmed", function (e) {
-            var index = ko.utils.arrayIndexOf(context.selectedItem().Items, e.contact);
-            var indexAll = ko.utils.arrayIndexOf(context.allItems, e.contact);
+            var index = ko.utils.arrayIndexOf(context.selectedItem().Items, e.item);
+            var indexAll = ko.utils.arrayIndexOf(context.allItems, e.item);
             if (index >= 0) {
                 context.selectedItem().Items.splice(index, 1);
                 context.selectedItem().ComputedList.remove(e);
@@ -84,7 +84,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
             updateModel(e.item, context);
             var oldItem = e.oldItem;
             var indexAll = ko.utils.arrayIndexOf(context.allItems, oldItem || {});
-            
+
             $.each(context.items(), function (i, type) {
                 var index = ko.utils.arrayIndexOf(type.Items, e.oldItem || {});
                 if (index > -1) {
@@ -128,7 +128,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
 
                 $.each(ar.Items, function (i, type) {
                     if (search != null && search.length > 0) {
-                        if (type.Title.toLowerCase().indexOf(search.toLowerCase()) > -1 ) {
+                        if (type.Title.toLowerCase().indexOf(search.toLowerCase()) > -1) {
                             ar.ComputedList.push(type);
                         }
                     } else {
@@ -154,7 +154,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
 
         }, this);
 
-       
+
         this.deleteClicked = function (data, event) {
             event.preventDefault();
             context.el.trigger({ type: "delete-contact", item: data });
@@ -165,11 +165,66 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
             context.el.trigger({ type: "edit-registration", item: data });
         }.bind(this);
 
-        
 
+        this.showPoP = function (data) {
+            var trackingChart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'popup_chart',
+                    defaultSeriesType: 'line',
+                    margin: [30, 40, 60, 30],
+                    height: 400,
+                    width: 950,
+                    zoomType: 'x'
+                },
+
+                title: {
+                    text: data.Title + ' Burndown Chart',
+                    style: {
+                        margin: '10px 100px 0 0' // center it
+                    }
+                },
+                xAxis: {
+                    title: {
+                        text: moment(data.StartDate).format('MMM YYYY')
+                    },
+                    categories: data.categories
+                },
+                yAxis: {
+                    title: {
+                        text: 'Remaining Work (Hours)'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }],
+                    min: 0,
+
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: 0,
+                    y: 100
+                },
+
+                tooltip: {
+                    formatter: function () {
+                        return 'Remaining work ' +
+                            this.y + '(hrs) as of ' + this.x + ' ' + moment(data.StartDate).format('MMM YYYY');
+                    }
+                },
+
+                series: [{
+                    data: data.data
+                }]
+            });
+
+        }
 
         this.loadData = function () {
- 
+
             var loaded = $.Deferred();
             $.ajax({
                 url: context.url("Get"),
@@ -178,9 +233,9 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
                 accept: 'application/json',
                 contentType: 'application/json'
             }).success(function (data) {
-     
+
                 context.items.removeAll();
-               
+
                 $.each(data, function (i, type) {
                     $.each(type.Items, function () {
                         updateModel(this, context);
@@ -190,7 +245,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects'], function (ko, S
                     context.items.push(type);
                 });
                 loaded.resolve();
-            }).fail(function () {   loaded.reject(); });
+            }).fail(function () { loaded.reject(); });
             return loaded.promise();
         };
 

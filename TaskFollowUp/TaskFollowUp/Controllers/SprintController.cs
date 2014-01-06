@@ -30,6 +30,7 @@ namespace TaskFollowUp.Controllers
             var list = new List<GenericModel<SprintModel>>();
             list.Add(sprint);
             return list;
+
         }
 
         //// GET api/values/5
