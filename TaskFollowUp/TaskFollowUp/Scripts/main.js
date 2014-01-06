@@ -128,11 +128,11 @@ require(['jquery',
                         $.connection.hub.start();
                         sprints.refresh = function (e) {
                             App.log('Changes detected, need to refresh: ' + e);
-                            $("body").trigger({ type: 'update-by-id', item: e, callback: "update-contact" });
+                            $("body").trigger({ type: 'update-by-id', item: e, callback: "update-item" });
                         };
                         sprints.remove = function (e) {
                             App.log('Changes detected, need to remove: ' + e);
-                            $("body").trigger({ type: 'update-by-id', item: e, callback: "delete-contact-confirmed" });
+                            $("body").trigger({ type: 'update-by-id', item: e, callback: "delete-item-confirmed" });
                         };
                     } catch (e) {
                         App.log(e);
@@ -153,14 +153,14 @@ require(['jquery',
             var newRegistrationVm = App.createViewModel("viewModels/NewItemViewModel", "#createItem");
             App.applyBindings(newRegistrationVm);
 
-            //var deleteContactsVm = App.createViewModel("viewModels/DeleteContactViewModel", "#confirmDelete");
-            //App.applyBindings(deleteContactsVm);
+            //var deleteItemsVm = App.createViewModel("viewModels/DeleteItemViewModel", "#confirmDelete");
+            //App.applyBindings(deleteItemsVm);
 
-            $("body").on("click", "li.contact .front, li.contact .close", function (e) {
+            $("body").on("click", "li.item .front, li.item .close", function (e) {
                 
                 e.preventDefault();
                 var el = $(this).closest("li");
-                var anyFlipped = $("li.contact.flipped");
+                var anyFlipped = $("li.item.flipped");
                 if (anyFlipped.length > 0 && anyFlipped[0]!==el[0])
                     anyFlipped.trigger("flip");
                 if(el.data("flippable") == true) {
@@ -170,7 +170,7 @@ require(['jquery',
                     el.gfxFlip({ width: 180, height: 170 }).delay(50).queueNext(function () { el.trigger("flip"); });
                 }
             });
-            $("#source").on("click", "li.contact .back a:not(.close)", function (e) {
+            $("#source").on("click", "li.item .back a:not(.close)", function (e) {
                 e.preventDefault();
                 var el = $(e.target).closest("a");
                 var parent = el.parents("li");

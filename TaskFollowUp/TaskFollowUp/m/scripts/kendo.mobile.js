@@ -14005,7 +14005,7 @@ function pad(number) {
      *   <li title=".km-camera"><span class="km-icon km-camera"></span>camera</li>
      *   <li title=".km-cart"><span class="km-icon km-cart"></span>cart</li>
      *   <li title=".km-compose"><span class="km-icon km-compose"></span>compose</li>
-     *   <li title=".km-contacts"><span class="km-icon km-contacts"></span>contacts</li>
+     *   <li title=".km-items"><span class="km-icon km-items"></span>items</li>
      *   <li title=".km-details"><span class="km-icon km-details"></span>details</li>
      *   <li title=".km-downloads"><span class="km-icon km-downloads"></span>downloads</li>
      *   <li title=".km-fastforward"><span class="km-icon km-fastforward"></span>fastforward</li>
@@ -14309,7 +14309,7 @@ function pad(number) {
      *   <li title=".km-camera"><span class="km-icon km-camera"></span>camera</li>
      *   <li title=".km-cart"><span class="km-icon km-cart"></span>cart</li>
      *   <li title=".km-compose"><span class="km-icon km-compose"></span>compose</li>
-     *   <li title=".km-contacts"><span class="km-icon km-contacts"></span>contacts</li>
+     *   <li title=".km-items"><span class="km-icon km-items"></span>items</li>
      *   <li title=".km-details"><span class="km-icon km-details"></span>details</li>
      *   <li title=".km-downloads"><span class="km-icon km-downloads"></span>downloads</li>
      *   <li title=".km-fastforward"><span class="km-icon km-fastforward"></span>fastforward</li>
@@ -14709,7 +14709,7 @@ function pad(number) {
      * @section
      * <h3>Detail Buttons</h3>
      * <p>Mobile ListView integrates with nested DetailButton widgets. These buttons are best suited when the user should be able to execute more than one action on a given row.
-     * Detail buttons support 4 default data-styles: <b>contactadd</b>, <b>detaildisclose</b>, <b>rowinsert</b> and <b>rowdelete</b>, along custom icons
+     * Detail buttons support 4 default data-styles: <b>itemadd</b>, <b>detaildisclose</b>, <b>rowinsert</b> and <b>rowdelete</b>, along custom icons
      * through the data-icon attribute. One row can contain both regular links and detail buttons.</p>
      *
      * @exampleTitle ListView with Detail Buttons
@@ -14718,7 +14718,7 @@ function pad(number) {
      *     <li>
      *         Default button styles
      *         <ul>
-     *             <li>Contact Add<a data-role="detailbutton" data-style="contactadd"></a></li>
+     *             <li>Item Add<a data-role="detailbutton" data-style="itemadd"></a></li>
      *             <li>Detail Disclose<a data-role="detailbutton" data-style="detaildisclose"></a></li>
      *             <li>Row Insert<a data-role="detailbutton" data-style="rowinsert"></a></li>
      *             <li>Row Delete<a data-role="detailbutton" data-style="rowdelete"></a></li>
@@ -14754,7 +14754,7 @@ function pad(number) {
      *   <li title=".km-camera"><span class="km-icon km-camera"></span>camera</li>
      *   <li title=".km-cart"><span class="km-icon km-cart"></span>cart</li>
      *   <li title=".km-compose"><span class="km-icon km-compose"></span>compose</li>
-     *   <li title=".km-contacts"><span class="km-icon km-contacts"></span>contacts</li>
+     *   <li title=".km-items"><span class="km-icon km-items"></span>items</li>
      *   <li title=".km-details"><span class="km-icon km-details"></span>details</li>
      *   <li title=".km-downloads"><span class="km-icon km-downloads"></span>downloads</li>
      *   <li title=".km-fastforward"><span class="km-icon km-fastforward"></span>fastforward</li>
@@ -16093,7 +16093,7 @@ function pad(number) {
      *   <li title=".km-camera"><span class="km-icon km-camera"></span>camera</li>
      *   <li title=".km-cart"><span class="km-icon km-cart"></span>cart</li>
      *   <li title=".km-compose"><span class="km-icon km-compose"></span>compose</li>
-     *   <li title=".km-contacts"><span class="km-icon km-contacts"></span>contacts</li>
+     *   <li title=".km-items"><span class="km-icon km-items"></span>items</li>
      *   <li title=".km-details"><span class="km-icon km-details"></span>details</li>
      *   <li title=".km-downloads"><span class="km-icon km-downloads"></span>downloads</li>
      *   <li title=".km-fastforward"><span class="km-icon km-fastforward"></span>fastforward</li>

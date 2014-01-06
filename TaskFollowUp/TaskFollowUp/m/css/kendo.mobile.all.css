@@ -347,8 +347,8 @@
 .km-rowdelete:after,
 .km-rowinsert:after,
 .km-rowinsert:before,
-.km-contactadd:after,
-.km-contactadd:before {
+.km-itemadd:after,
+.km-itemadd:before {
   width: .6em;
   height: .1em;
   width: .7rem;
@@ -362,7 +362,7 @@
   margin-left: -.38rem;
 }
 .km-rowinsert:after,
-.km-contactadd:after {
+.km-itemadd:after {
   width: .1em;
   height: .6em;
   width: .2rem;
@@ -1273,7 +1273,7 @@
 .km-camera,
 .km-cart,
 .km-compose,
-.km-contacts,
+.km-items,
 .km-delete,
 .km-details,
 .km-download,
@@ -1346,9 +1346,9 @@ body:after {
   -webkit-mask-position-x: 12%;
   clip-path: url("images/iconmasks.svg#edit");
 }
-.km-contacts {
+.km-items {
   -webkit-mask-position-x: 14%;
-  clip-path: url("images/iconmasks.svg#contacts");
+  clip-path: url("images/iconmasks.svg#items");
 }
 .km-trash,
 .km-delete {
@@ -3616,8 +3616,8 @@ body:after {
 .km-blackberry .km-rowdelete:after,
 .km-blackberry .km-rowinsert:after,
 .km-blackberry .km-rowinsert:before,
-.km-blackberry .km-contactadd:after,
-.km-blackberry .km-contactadd:before {
+.km-blackberry .km-itemadd:after,
+.km-blackberry .km-itemadd:before {
   background: #fff;
 }
 .km-blackberry .km-listview-link:after,
@@ -4778,8 +4778,8 @@ body:after {
 .km-meego .km-rowdelete:after,
 .km-meego .km-rowinsert:after,
 .km-meego .km-rowinsert:before,
-.km-meego .km-contactadd:after,
-.km-meego .km-contactadd:before {
+.km-meego .km-itemadd:after,
+.km-meego .km-itemadd:before {
   background: #282828;
 }
 .km-meego .km-listview-link:after,

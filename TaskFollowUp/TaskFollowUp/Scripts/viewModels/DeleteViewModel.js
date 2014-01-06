@@ -7,7 +7,7 @@
         this.el = $(el);
         this.item = null;
         
-        $("body").bind("delete-contact", function (e) {
+        $("body").bind("delete-item", function (e) {
             context.item = e.Item;
             context.el.modal('show');
         });

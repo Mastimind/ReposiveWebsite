@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="span9 main-content">
-        <div id="view-contacts">
+        <div id="view-items">
             <div class="row-fluid navbar" style="margin-bottom: 0">
                 <div class="navbar-inner">
                     <form class="navbar-form pull-left">
@@ -49,7 +49,7 @@
 
                     <!-- ko with: selectedItem -->
                     <ul id="destination" class="hidden" data-bind="foreach: ComputedList">
-                        <li data-id="" data-bind="attr: { 'data-id': Id }" class="contact">
+                        <li data-id="" data-bind="attr: { 'data-id': Id }" class="item">
                             <div data-bind="click: $root.showPoP" class="front">
                                 <h4>
                                     <span data-bind="text: Title"></span>

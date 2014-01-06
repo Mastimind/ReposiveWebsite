@@ -53,8 +53,8 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects', 'jquery'], funct
     return function (el) {
         var context = this;
         this.el = $(el);
-        this.contactsView = this.el.find("#view-contacts");
-        this.exportView = this.el.find("#export-contacts");
+        this.itemsView = this.el.find("#view-items");
+        this.exportView = this.el.find("#export-items");
 
         this.url = App.urlBuilder("sprint");
 
@@ -68,7 +68,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects', 'jquery'], funct
         this.forExport = ko.observableArray([]);
         this._updateUIVersion = 0;
 
-        $("body").bind("delete-contact-confirmed", function (e) {
+        $("body").bind("delete-item-confirmed", function (e) {
             var index = ko.utils.arrayIndexOf(context.selectedItem().Items, e.item);
             var indexAll = ko.utils.arrayIndexOf(context.allItems, e.item);
             if (index >= 0) {
@@ -80,7 +80,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects', 'jquery'], funct
             }
             updateDisplay();
         });
-        $("body").bind("update-contact", function (e) {
+        $("body").bind("update-item", function (e) {
             updateModel(e.item, context);
             var oldItem = e.oldItem;
             var indexAll = ko.utils.arrayIndexOf(context.allItems, oldItem || {});
@@ -157,7 +157,7 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects', 'jquery'], funct
 
         this.deleteClicked = function (data, event) {
             event.preventDefault();
-            context.el.trigger({ type: "delete-contact", item: data });
+            context.el.trigger({ type: "delete-item", item: data });
         }.bind(this);
 
         this.editClicked = function (data, event) {
@@ -271,16 +271,16 @@ define(['knockout', 'Sammy', 'moment', 'toastr', 'gfx/effects', 'jquery'], funct
                         context.loadData().done(function () { context.populateItems(s.params.title); });
                     }
                     else {
-                        context.contactsView
+                        context.itemsView
                             .queueNext(function () {
                                 if (context.exportView.is(":visible")) {
                                     context.exportView.gfxRaisedOut().hide();
                                 }
                             })
                             .queueNext(function () {
-                                if (context.contactsView.is(":visible") == false) {
-                                    context.contactsView.gfxRaisedIn();
-                                    context.contactsView.removeAttr("style");
+                                if (context.itemsView.is(":visible") == false) {
+                                    context.itemsView.gfxRaisedIn();
+                                    context.itemsView.removeAttr("style");
                                 }
                             }).queueNext(function () {
                                 context.populateItems(s.params.title);
