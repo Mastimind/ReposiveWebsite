@@ -192,6 +192,8 @@
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap.cerulean.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -279,6 +281,10 @@
     <Content Include="m\css\textures\glass.png" />
     <Content Include="m\css\textures\highlight.png" />
     <Content Include="m\scripts\app.build.js" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
     <None Include="m\scripts\jquery-1.7.2.intellisense.js" />
     <Content Include="m\scripts\jquery-1.7.2.js" />
     <Content Include="m\scripts\kendo.mobile.js" />

@@ -63,16 +63,16 @@
                                     
                                 </div>
                             </div>
-                            <div class="back" style="display: none">
-                                <strong><span data-bind="text: Title"></span></strong>
+                            <div class="back fa-hover" style="display: none">
+                                <strong><span style="padding-left:4em" data-bind="text: Title"></span></strong>
                                 <br />
-                                <a href="#" class="btn btn-info" data-bind="click: $root.showPoP">sprint burndown</a>
+                                <a href="#" style="align-content:center;align-self:center;position:absolute;padding-left:4em;padding-top:1em" data-bind="click: $root.showPoP"><i class="fa fa-bar-chart-o fa-5x"></i></a>
                                 
                                 <div style="position: absolute; bottom: 40px; align-content: center">
-                                    <a href="#" class="btn btn-info" data-bind="click: $root.editClicked">Edit</a>
-                                    <a href="#" class="btn btn-danger" data-bind="click: $root.deleteClicked">Delete</a>
+                                    <a href="#" class="btn btn-lg btn-success" data-bind="click: $root.editClicked"><i class="fa fa-pencil fa-fw"></i>Edit</a>
+                                    <a href="#" class="btn btn-danger" data-bind="click: $root.deleteClicked"><i class="fa fa-trash-o fa-fw"></i>Delete</a>
                                 </div>
-                                <a href="#" class="btn action-btn close btn-inverse">X</a>
+                                <a href="#" style="" class="action-btn close"><i class="fa fa-share-square-o"></i></a>
 
                             </div>
                         </li>

@@ -51,6 +51,7 @@ namespace TaskFollowUp.Controllers
                 helper.Timestamp = lastUpdated;
 
             helper.AddDirectory("~/Images", "*.png", false, SearchOption.AllDirectories);
+            helper.AddDirectory("~/Content/font-awesome/fonts", "*.*", false, SearchOption.AllDirectories);
             helper.AddDirectory("~/img", "*.png", false, SearchOption.AllDirectories);
             helper.AddFile("~/scripts/require.js", false);
             helper.AddFile("~/Content/application-built.css", false);

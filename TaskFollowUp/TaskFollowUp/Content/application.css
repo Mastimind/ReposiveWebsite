@@ -2,6 +2,7 @@
 @import url('bootstrap-responsive.css');
 @import url('toastr.css');
 @import url('toastr-responsive.css');
+@import url('font-awesome/css/font-awesome.min.css');
 
 body {
     padding-top: 60px;
